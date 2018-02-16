@@ -29,8 +29,8 @@ def main():
     its = 4
     rad = 100
     pos = (150, 150)
-    col = True
-    out = True
+    col = False
+    out = False
 
     flake3 = Flake(3, rad, (pos[0], pos[1]))
     flake3.colorful = col

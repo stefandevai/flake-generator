@@ -1,5 +1,9 @@
 # N-flakes
-https://en.wikipedia.org/wiki/N-flake
+![](img/flakes.png)
+![](img/colorful.png)
+![](img/outlined.png)
+
+[N-flakes](https://en.wikipedia.org/wiki/N-flake)
 
 # TODO:
-- Keep variables as floats so distortion gets less worse in higher steps
+- Better visualization control
