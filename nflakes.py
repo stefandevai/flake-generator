@@ -4,8 +4,8 @@ import math
 import pygame as pg
 from pygame.locals import *
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 900
+SCREEN_HEIGHT = 700
 SCREEN_COLOR = (100, 100, 100)
 
 FLAKE_COLOR = (255, 150, 70)
@@ -26,31 +26,27 @@ class Polygon:
 
         pg.draw.polygon(win, FLAKE_COLOR, coords, 0)
 
-class Flake:
-    def __init__(self, nv, rd, ct):
-        self.polygons = [Polygon(nv, rd, ct)]
-        self.num_vertices = nv
-        self.radius = rd
-        self.center = ct
-        gr = (1.0 + math.sqrt(5))/2.0
-        self.constant = 1.0/(1.0 + gr)
-
-    def draw(self, win, steps):
-            self.polygons[0].draw(win)
-            # rd = self.radius*self.constant
-            for i in range(1, steps):
-                for num in range(0, self.num_vertices**i):
-                    polygon_base = self.polygons[0]
-                    self.polygons.append(Polygon(self.num_vertices, polygon_base.radius*self.constant, (200, 400)))
-                    self.polygons[0+1].draw(win)
+gr = (1.0 + math.sqrt(5))/2.0
+CONSTANT = 1.0/(1.0 + gr)
+def draw_nflake(steps, nv, rd, ct, win):
+    if steps <= 0:
+        pass
+    elif steps == 1:
+        poly = Polygon(nv, rd, ct)
+        poly.draw(win)
+        draw_nflake(steps-1, nv, rd, ct, win)
+    else:
+        poly = Polygon(nv, rd, ct)
+        for i in range(0, nv):
+            cx = round(ct[0] + rd*math.cos(math.radians((360/nv)*i + 90)) - rd*CONSTANT*math.cos(math.radians((360/nv)*i + 90)))
+            cy = round(ct[1] - rd*math.sin(math.radians((360/nv)*i + 90)) + rd*CONSTANT*math.sin(math.radians((360/nv)*i + 90)))
+            draw_nflake(steps-1, nv, rd*CONSTANT, (cx, cy), win)
 
 def main():
     pg.init()
     pg.display.set_caption('n-flakes')
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     screen.fill(SCREEN_COLOR)
-
-    flake = Flake(5, 200, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
 
     running = True
     while running == True:
@@ -61,7 +57,7 @@ def main():
             elif e.type == QUIT:
                 running = False
 
-        flake.draw(screen, 0)
+        draw_nflake(4, 5, 300, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2), screen)
         pg.display.flip()
 
     pg.quit()
