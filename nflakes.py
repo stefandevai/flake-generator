@@ -3,12 +3,14 @@
 import math
 import pygame as pg
 from pygame.locals import *
+from pygame import gfxdraw
+
 
 SCREEN_WIDTH = 900
 SCREEN_HEIGHT = 700
-SCREEN_COLOR = (100, 100, 100)
+SCREEN_COLOR = (52, 9, 38)
 
-FLAKE_COLOR = (255, 150, 70)
+FLAKE_COLOR = (255, 195, 31)
 CONSTANT = 1.0/(1.0 + ((1.0 + math.sqrt(5))/2.0))
 
 class Polygon:
@@ -25,7 +27,8 @@ class Polygon:
             cy = round(self.center[1] - self.radius*math.sin(math.radians(self.angle_base*i + 90)))
             coords.append((cx, cy))
 
-        pg.draw.polygon(win, FLAKE_COLOR, coords, 0)
+        pg.gfxdraw.aapolygon(win, coords, FLAKE_COLOR)
+        # pg.draw.polygon(win, FLAKE_COLOR, coords, 0)
 
 class Flake:
     def __init__(self, nv, rd, ct):
