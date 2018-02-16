@@ -12,9 +12,9 @@
 
 - Linux instructions if you already have git, python and pip installed:
 
-`$ git clone https://github.com/stefandevai/n-flakes` <\br>
-`$ cd n-flakes` <\br>
-`$ pip install pygame` <\br>
+`$ git clone https://github.com/stefandevai/n-flakes` <br>
+`$ cd n-flakes` <br>
+`$ pip install pygame` <br>
 `$ python n-flake-generator`
 
 # TODO:
