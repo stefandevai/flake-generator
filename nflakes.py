@@ -26,13 +26,31 @@ class Polygon:
 
         pg.draw.polygon(win, FLAKE_COLOR, coords, 0)
 
+class Flake:
+    def __init__(self, nv, rd, ct):
+        self.polygons = [Polygon(nv, rd, ct)]
+        self.num_vertices = nv
+        self.radius = rd
+        self.center = ct
+        gr = (1.0 + math.sqrt(5))/2.0
+        self.constant = 1.0/(1.0 + gr)
+
+    def draw(self, win, steps):
+            self.polygons[0].draw(win)
+            # rd = self.radius*self.constant
+            for i in range(1, steps):
+                for num in range(0, self.num_vertices**i):
+                    polygon_base = self.polygons[0]
+                    self.polygons.append(Polygon(self.num_vertices, polygon_base.radius*self.constant, (200, 400)))
+                    self.polygons[0+1].draw(win)
+
 def main():
     pg.init()
     pg.display.set_caption('n-flakes')
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     screen.fill(SCREEN_COLOR)
 
-    pentaflake = Polygon(5, 200, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+    flake = Flake(5, 200, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
 
     running = True
     while running == True:
@@ -43,10 +61,7 @@ def main():
             elif e.type == QUIT:
                 running = False
 
-        pentaflake.draw(screen)
-        # pg.draw.polygon(screen, FLAKE_COLOR, [(152,215), (200,250), (247, 215), (229, 159), (170, 159)], 0)
-        # draw_polygon(5, 50, (400, 400))
-
+        flake.draw(screen, 0)
         pg.display.flip()
 
     pg.quit()
