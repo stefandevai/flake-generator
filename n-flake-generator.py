@@ -9,12 +9,12 @@ def generate_flakes(screen, col = False, out = False):
     its = 4
     rad = 100
     pos = (150, 150)
-    delay = 500
+    delay = 0
 
     flake3 = Flake(3, rad, (pos[0], pos[1]))
     flake3.colorful = col
     flake3.outlined = out
-    flake3.draw(its+1, screen)
+    flake3.draw(its, screen)
     pg.display.flip()
     pg.time.delay(delay)
 
@@ -52,14 +52,15 @@ def generate_flakes(screen, col = False, out = False):
     flake12.draw(its, screen)
 
 def main():
-    fractal_string = '               /\\\n              /\/\\\n             /\  /\\\n            /\/\/\/\\\n           /\      /\\\n          /\/\    /\/\\\n         /\  /\  /\  /\\\n        /\/\/\/\/\/\/\/\\\n       /\              /\\\n      /\/\            /\/\\\n     /\  /\          /\  /\\\n    /\/\/\/\        /\/\/\/\\\n   /\      /\      /\      /\\\n  /\/\    /\/\    /\/\    /\/\\\n /\  /\  /\  /\  /\  /\  /\  /\\\n/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\\n'
+    header_string = '\n||||||||||||||||||||||||||||||||||||||||||||||||||\n||||    N - F L A K E    G E N E R A T O R    ||||\n||||||||||||||||||||||||||||||||||||||||||||||||||\n'
+    fractal_string = '\n               /\\\n              /\/\\\n             /\  /\\\n            /\/\/\/\\\n           /\      /\\\n          /\/\    /\/\\\n         /\  /\  /\  /\\\n        /\/\/\/\/\/\/\/\\\n       /\              /\\\n      /\/\            /\/\\\n     /\  /\          /\  /\\\n    /\/\/\/\        /\/\/\/\\\n   /\      /\      /\      /\\\n  /\/\    /\/\    /\/\    /\/\\\n /\  /\  /\  /\  /\  /\  /\  /\\\n/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\\n'
     welcome_string = ("\nWelcome to n-flake generator developed by Stefan Devai\n"
                       "Visit the repo in: https://github.com/stefandevai/n-flakes\n")
     menu_string = ("\nOPTIONS:\n1 - Input vertices and iterations\n"
                    "2 - Run demo\n"
                    "3 - Exit\n")
 
-    print(fractal_string, welcome_string, menu_string)
+    print(header_string, fractal_string, welcome_string, menu_string)
 
     option = -1
     running = False
@@ -78,6 +79,33 @@ def main():
     if option == 3:
         pass
     else:
+        colorful = False
+        outline = False
+
+        running = False
+        while running == False:
+            answer = input('Colorful mode? (yes/no) ')
+
+            if answer == 'yes' or answer == 'y' or answer == 'Y':
+                colorful = True
+                running = True
+            elif answer == 'no' or answer == 'n' or answer == 'N':
+                running = True
+            else:
+                print('Please answer with \'yes\' or \'no\'')
+
+        running = False
+        while running == False:
+            answer = input('Outline mode? (yes/no) ')
+
+            if answer == 'yes' or answer == 'y' or answer == 'Y':
+                outline = True
+                running = True
+            elif answer == 'no' or answer == 'n' or answer == 'N':
+                running = True
+            else:
+                print('Please answer with \'yes\' or \'no\'')
+
         # SCREEN_COLOR = (31, 27, 27)
         SCREEN_COLOR = (39, 42, 49)
 
@@ -86,7 +114,6 @@ def main():
             SCREEN_HEIGHT = 600
             vertices = int(input("Vertices: "))
             iterations = int(input("Iterations: "))
-
         else:
             SCREEN_WIDTH = 760
             SCREEN_HEIGHT = 530
@@ -99,10 +126,11 @@ def main():
         if option == 1:
             center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
             nflake = Flake(vertices, 250, center)
-            nflake.colorful = True
+            nflake.colorful = colorful
+            nflake.outlined = outline
             nflake.draw(iterations, screen)
         else:
-            generate_flakes(screen, False, False)
+            generate_flakes(screen, colorful, outline)
 
         pg.display.flip()
 
