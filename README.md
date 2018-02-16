@@ -1,4 +1,22 @@
 # N-flake generator
+
+               /\
+              /\/\
+             /\  /\
+            /\/\/\/\
+           /\      /\
+          /\/\    /\/\
+         /\  /\  /\  /\
+        /\/\/\/\/\/\/\/\
+       /\              /\
+      /\/\            /\/\
+     /\  /\          /\  /\
+    /\/\/\/\        /\/\/\/\
+   /\      /\      /\      /\
+  /\/\    /\/\    /\/\    /\/\
+ /\  /\  /\  /\  /\  /\  /\  /\
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
 ![](img/flakes2.png)
 ![](img/colorful2.png)
 ![](img/outlined2.png)
@@ -8,14 +26,14 @@
 
 # How to run the genrator
 - It only has PyGame module as a dependency
-- Download the repo, install [Python 3](https://wiki.python.org/moin/BeginnersGuide/Download), install [PyGame](https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation), run *n-flake-generator.py*
+- Download the repo, install [Python 3](https://wiki.python.org/moin/BeginnersGuide/Download), install [PyGame](https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation) and run `python n-flake-generator.py`
 
 - Linux instructions if you already have git, python and pip installed:
 
-	$ git clone https://github.com/stefandevai/n-flakes
-	$ cd n-flakes
-	$ pip install pygame
-	$ python n-flake-generator
+`$ git clone https://github.com/stefandevai/n-flakes`
+`$ cd n-flakes`
+`$ pip install pygame`
+`$ python n-flake-generator`
 
 # TODO:
 - Better visualization control
