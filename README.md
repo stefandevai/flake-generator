@@ -1,22 +1,4 @@
 # N-flake generator
-
-               /\
-              /\/\
-             /\  /\
-            /\/\/\/\
-           /\      /\
-          /\/\    /\/\
-         /\  /\  /\  /\
-        /\/\/\/\/\/\/\/\
-       /\              /\
-      /\/\            /\/\
-     /\  /\          /\  /\
-    /\/\/\/\        /\/\/\/\
-   /\      /\      /\      /\
-  /\/\    /\/\    /\/\    /\/\
- /\  /\  /\  /\  /\  /\  /\  /\
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-
 ![](img/flakes2.png)
 ![](img/colorful2.png)
 ![](img/outlined2.png)
@@ -30,9 +12,9 @@
 
 - Linux instructions if you already have git, python and pip installed:
 
-`$ git clone https://github.com/stefandevai/n-flakes`
-`$ cd n-flakes`
-`$ pip install pygame`
+`$ git clone https://github.com/stefandevai/n-flakes` <\br>
+`$ cd n-flakes` <\br>
+`$ pip install pygame` <\br>
 `$ python n-flake-generator`
 
 # TODO:
