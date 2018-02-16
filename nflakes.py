@@ -61,7 +61,7 @@ def main():
     screen.fill(SCREEN_COLOR)
 
     center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
-    nflake = Flake(5, 300, center)
+    nflake = Flake(4, 300, center)
     nflake.draw(4, screen)
 
     running = True
