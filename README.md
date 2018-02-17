@@ -1,4 +1,4 @@
-# N-flake generator
+# Python N-flake fractal generator
 ![](img/flakes2.png)
 ![](img/colorful2.png)
 ![](img/outlined2.png)
