@@ -37,9 +37,11 @@ class FlakeGenerator:
         self.outlined = self.__ask('Outlined mode?')
 
         pg.init()
-        pg.display.set_caption('n-flakes')
+        pg.display.set_caption('N-flake Generator (interactive mode)')
         self.screen = pg.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
         self.screen.fill(self.SCREEN_COLOR)
+
+        self.font = pg.font.Font('assets/OpenSans-Light.ttf', 20)
 
         self.center = (self.SCREEN_WIDTH/2, self.SCREEN_HEIGHT/2)
         self.nflake = Flake(self.vertices, 250, self.center)
@@ -55,7 +57,7 @@ class FlakeGenerator:
         self.SCREEN_HEIGHT = 530
 
         pg.init()
-        pg.display.set_caption('n-flakes')
+        pg.display.set_caption('N-flake Generator (demonstration)')
         self.screen = pg.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
         self.screen.fill(self.SCREEN_COLOR)
 
@@ -105,7 +107,6 @@ class FlakeGenerator:
         flake12.draw(its, self.screen)
         pg.display.flip()
 
-
     def interactive_generation(self):
         header_string = '\n||||||||||||||||||||||||||||||||||||||||||||||||||\n||||    N - F L A K E    G E N E R A T O R    ||||\n||||||||||||||||||||||||||||||||||||||||||||||||||\n'
         sierpinski_string = '\n               /\\\n              /\/\\\n             /\  /\\\n            /\/\/\/\\\n           /\      /\\\n          /\/\    /\/\\\n         /\  /\  /\  /\\\n        /\/\/\/\/\/\/\/\\\n       /\              /\\\n      /\/\            /\/\\\n     /\  /\          /\  /\\\n    /\/\/\/\        /\/\/\/\\\n   /\      /\      /\      /\\\n  /\/\    /\/\    /\/\    /\/\\\n /\  /\  /\  /\  /\  /\  /\  /\\\n/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\\n'
@@ -132,8 +133,10 @@ class FlakeGenerator:
         else:
             if self.option == 1:
                 self.input_generation()
+                self.update()
             else:
                 self.demo_generation()
+                self.update()
 
 
     def update(self):
@@ -171,6 +174,12 @@ class FlakeGenerator:
                 self.nflake.outlined = self.outlined
                 self.nflake.colorful = self.colorful
                 self.nflake.draw(self.iterations, self.screen)
+
+                self.vert_text = self.font.render("Vertices: " + str(self.vertices), True, (255, 255, 255))
+                self.iter_text = self.font.render("Iterations: " + str(self.iterations), True, (255, 255, 255))
+                self.screen.blit(self.vert_text, (50, 35))
+                self.screen.blit(self.iter_text, (50, 60))
+
                 pg.display.flip()
 
         pg.quit()
@@ -178,7 +187,6 @@ class FlakeGenerator:
 def main():
     generator = FlakeGenerator()
     generator.interactive_generation()
-    generator.update()
 
 if __name__ == '__main__':
     main()
