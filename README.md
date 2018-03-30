@@ -11,10 +11,13 @@
 
 - **Linux** instructions if you already have git, python and pip installed:
 
-`$ git clone https://github.com/stefandevai/n-flakes` <br>
-`$ cd n-flakes` <br>
-`$ pip install pygame` <br>
-`$ python n-flake-generator`
+		```bash
+		$ git clone https://github.com/stefandevai/n-flakes` <br>
+		$ cd n-flakes` <br>
+		$ pip install pygame` <br>
+		$ python n-flake-generator`
+
+		```
 
 - You will be asked if you want to run the **interactive mode** (option 1) or an **example demonstration** (option 2);
 - For the interactive mode, you can choose the number of vertices, the number of iterations to build the flake, if you want it with a color scheme or outlined, like in the examples above;

@@ -19,6 +19,8 @@ class Polygon:
             cy = round(self.center[1] - inv*self.radius*math.sin(math.radians(self.angle_base*i + self.ROTATION)))
             coords.append((cx, cy))
 
+        # Uncomment draw aliased
+        # pg.draw.polygon(win, self.color, coords)
         pg.gfxdraw.aapolygon(win, coords, self.color)
         if self.fill == True:
             pg.gfxdraw.filled_polygon(win, coords, self.color)
@@ -26,6 +28,7 @@ class Polygon:
 class Flake:
     ROTATION = 90
     # COLORS = [(252, 224, 146), (252, 183, 150), (179, 135, 120), (148, 116, 107), (91, 78, 83), (57, 56, 69), (47, 50, 65)]
+    # COLORS = [(243, 239, 219), (155, 142, 126), (165, 26, 65), (78, 107, 119), (49, 29, 57), (103, 67, 79), (78, 107, 119)]
     COLORS = [(243, 239, 219), (236, 221, 205), (189, 205, 171), (120, 203, 188), (103, 153, 162), (78, 107, 119)]
 
     def __init__(self, nv, rd, ct):

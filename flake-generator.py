@@ -48,6 +48,7 @@ class FlakeGenerator:
         self.nflake.colorful = self.colorful
         self.nflake.outlined = self.outlined
         self.nflake.draw(self.iterations, self.screen)
+
         pg.display.flip()
 
     def demo_generation(self):
