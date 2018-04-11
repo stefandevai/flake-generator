@@ -7,7 +7,8 @@ from Flake import *
 
 class FlakeGenerator:
     def __init__(self):
-        self.SCREEN_COLOR = (39, 42, 49)
+        # self.SCREEN_COLOR = (39, 42, 49)
+        self.SCREEN_COLOR = (6, 3, 5)
 
     def __ask(self, question, default = False):
         response = False
